@@ -1,0 +1,50 @@
+﻿@using LibraryManagement.LibraryModule
+@using LibraryManagement.LibraryModule.BookModels
+@model ModernBook
+@{
+	ViewData["Title"] = "Редактирование книги (Современный)";
+}
+
+<h1 class="bookform-header">@ViewData["Title"]</h1>
+
+<form asp-action="FormEdit" method="post" class="bookform-main">
+	@Html.AntiForgeryToken()
+	<input type="hidden" asp-for="Category" value="@BookCategory.Modern"/>
+
+	<div class="form-group">
+		<label asp-for="Era">Book Era:</label>
+		<select asp-for="Era" asp-items="ViewBag.AllowedEras"></select>
+		<span asp-validation-for="Era" class="text-danger"></span>
+	</div>
+
+	<div class="form-group">
+		<label asp-for="Title">Book Title:</label>
+		<input asp-for="Title" required />
+		<span asp-validation-for="Title" class="text-danger"></span>
+	</div>
+
+	<div class="form-group">
+		<label asp-for="Author">Book Author:</label>
+		<input asp-for="Author" required />
+		<span asp-validation-for="Author" class="text-danger"></span>
+	</div>
+
+	<div class="form-group">
+		<label asp-for="Publication">Year Publication:</label>
+		<input type="number" asp-for="Publication" min="0" required />
+		<span asp-validation-for="Publication" class="text-danger"></span>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(Model => Model.Serial)
+		@Html.EditorFor(Model => Model.Serial)
+		@Html.ValidationMessageFor(Model => Model.Serial, "", new { @class = "text-danger" })
+	</div>
+
+	@await Html.PartialAsync("_ModernFormPartial", Model)
+	@await Html.PartialAsync("_FormFooterPartial")
+</form>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial"/>
+}

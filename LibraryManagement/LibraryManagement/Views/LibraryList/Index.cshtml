@@ -1,0 +1,60 @@
+﻿@using LibraryManagement.LibraryModule
+@model LibraryListModel
+@{
+	var message = TempData["DebugMessage"] as string;
+}
+
+<form method="get" class="booksfilter">
+	<label>Категории:</label>
+	<select id="filterCategory" asp-for="SelectedCategory" asp-items="Html.GetEnumSelectList<BookCategory>()">
+		<option value="">-- Все категории --</option>
+	</select>
+
+	<label>Эпоха:</label>
+	<select id="filterEra" asp-for="SelectedEra" asp-items="Html.GetEnumSelectList<BookEra>()">
+		<option value="">-- Все эпохи --</option>
+	</select>
+
+	<button type="submit">Применить фильтрацию</button>
+</form>
+
+<h2>Список книг:</h2>
+
+@if (!string.IsNullOrWhiteSpace(message))
+{
+	<h3 class="alert-warning" style="margin: 10px;">
+		⚙️ Отладка: @message
+	</h3>
+}
+
+<table class="bookcards">
+	<thead>
+		<tr>
+			<th>Категория</th>
+			<th>Эпоха</th>
+			<th>Краткое описание</th>
+			<th>Действия</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var book in Model.Books)
+		{
+			<tr>
+				<td>@book.Category</td>
+				<td>@book.Era</td>
+				<td>@book.GetShortDescription()</td>
+				<td>
+					<a href="@Url.Action("FormEdit", book.Category + "Book", new {year = book.Publication, title = book.Title})" 
+					class="papernote-btn">Редактировать эту книгу</a>
+					<a asp-action="BookDetails" asp-route-year="@book.Publication" asp-route-title="@book.Title" 
+					class="papernote-btn">Показать подробно...</a>
+					<form asp-action="Delete" method="post" asp-route-year="@book.Publication" asp-route-title="@book.Title" 
+					style="display:inline;" onsubmit="return confirmDelete('@book.Title');">
+						<button type="submit" class="papernote-btn">Удалить</button>
+					</form>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+<script src="~/js/site.js"></script>

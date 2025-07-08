@@ -1,0 +1,8 @@
+﻿@using LibraryManagement.LibraryModule.BookModels
+@model GuideBook
+
+<div class="form-group">
+	@Html.LabelFor(Model => Model.PhoneData)
+	@Html.EditorFor(Model => Model.PhoneData)
+	@Html.ValidationMessageFor(Model => Model.PhoneData, "", new { @class = "text-danger" })
+</div>

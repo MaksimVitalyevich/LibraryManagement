@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/about.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/changelog.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/problems.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/management.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="razorpage-main-header">
+        <div>
+            <h1 class="razorpage-site-title">XXI Современная Веб-Библиотека</h1>
+            <span class="booklib-logo">XXI Library</span>
+            <nav class="razorpage-main-nav">
+                <a asp-controller="Main" asp-action="Index">Главная</a>
+                <a asp-controller="LibraryList" asp-action="Index">Список книг</a>
+                <a asp-page="/ManageGuide">Руководство управления книгами...</a>
+                <a asp-page="/About">О проекте</a>
+            </nav>
+        </div>
+        <section class="razorpage-site-langselect">
+            Выбор языка:
+            <form id="langForm" method="get">
+                <select name="culture" onchange="document.getElementById('langForm').submit();">
+                    <option value="en" selected>English</option>
+                    <option value="ru">Русский</option>
+                </select>
+            </form>
+        </section>
+    </header>
+    <main class="mainpage-container">
+        @RenderBody()
+    </main>
+
+    <footer class="razorpage-main-footer">
+        <p>2025 XXI Современная Веб-Библиотека. Креативное Веб-Прилодение для управления собственными книгами. &copy; Maksim Vitalyevich.</p>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,136 @@
+﻿body {
+    background: linear-gradient(180deg, #fff9f0, #f5f0e6);
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #000;
+    font-family: 'Baskerville Old Face', serif;
+    font-weight: 600;
+    text-decoration: underline;
+    margin-left: 0.5rem;
+}
+
+p {
+    font-family: 'Baskerville Old Face', serif;
+    color: #3d2e1e;
+    opacity: 0.85;
+    margin-bottom: 0.6rem;
+}
+
+.alert-warning {
+    font-family: 'Baskerville Old Face', serif;
+    font-size: 1.05rem;
+    color: #ee0b0b;
+    margin-left: 0.5rem;
+}
+
+booksfilter {
+    background: #f5f0e6;
+    border: 2px dashed #a67c52;
+    padding: 1rem;
+    border-radius: 12px;
+    font-family: 'High Tower Text', serif;
+    box-shadow: 2px 2px 6px #ccc;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+.booksfilter::before {
+    content: "Book filter";
+    position: absolute;
+    top: -0.9rem;
+    left: 1rem;
+    background: #f5f0e6;
+    padding: 0 0.4rem;
+    font-size: 1.1rem;
+    color: #5e4329;
+    font-weight: bold;
+    font-family: 'Baskerville Old Face', serif;
+}
+.booksfilter select {
+    font-family: 'Baskerville Old Face', serif;
+    background: #fff9f0;
+    border: 2px solid #b28d66;
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: #4a3a28;
+    margin-right: 0.5rem;
+    box-shadow: inset 0 0 3px #b28d66;
+}
+.booksfilter button {
+    font-family: 'Baskerville Old Face', serif;
+    background: linear-gradient(to bottom, #d6b28e, #a97849);
+    border: 2px solid #6a4b2d;
+    color: #2c1c0f;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 1px 1px 3px #555;
+    text-shadow: 1px 1px #e0c2a6;
+    transition: background 0.2s ease-in-out;
+}
+.booksfilter button:hover {
+    background: linear-gradient(to bottom, #c9a27b, #935f2e);
+}
+
+.bookcards {
+    width: 100%;
+    border-collapse: collapse;
+    background: #faf2dc;
+    font-family: 'Baskerville Old Face', serif;
+    color: #1a1a1a;
+    box-shadow: 0 0 6px rgba(0,0,0,0.15);
+    border: 2px solid #333;
+    margin-bottom: 2rem;
+}
+.bookcards th,
+.bookcards td {
+    border: 1px solid #444;
+    padding: 10px 14px;
+    text-align: left;
+}
+.bookcards th {
+    background-color: #f1e7c3;
+    font-weight: bold;
+    border-bottom: 3px solid #000;
+    color: #000;
+    font-size: 1.05rem;
+    text-shadow: 0.5px 0.5px #999;
+}
+.bookcards tr:nth-child(even) {
+    background-color: #fdf9ee;
+}
+
+.papernote-btn {
+    background: #f5e4b8;
+    border: 1px solid #d6bb88;
+    border-radius: 4px;
+    font-family: 'Baskerville Old Face', serif;
+    font-size: 0.9rem;
+    color: #3b2c1b;
+    padding: 4px 10px;
+    box-shadow: 1px 1px 3px rgba(50,30,10,0.3);
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+.papernote-btn:hover {
+    background: #f0d9a7;
+    box-shadow: 1px 1px 5px rgba(50,30,10,0.4);
+}
+
+.bookinfo-card {
+    background: #fbf5e1;
+    border: 1px solid #d1c4a1;
+    border-left: 5px solid #8b6f45;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-family: 'Baskerville Old Face', serif;
+    justify-content: space-between;
+    color: #2a1a0a;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    position: relative;
+}
+

@@ -1,0 +1,76 @@
+﻿body {
+    background: linear-gradient(135deg, #cfefff, #a0d8ff);
+    font-family: 'Segoe UI', sans-serif;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    color: #004080;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
+}
+
+code, pre {
+    background: #eef8ff;
+    border-left: 4px solid #70c0ff;
+    padding: 0.5rem 1rem;
+    display: block;
+    font-family: Consolas, monospace;
+    margin: 1rem 0;
+    border-radius: 6px;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #70c0ff;
+    margin: 2rem 0;
+}
+
+.proj-block {
+    background: linear-gradient(145deg, #e6f5ff, #d2eafc);
+    border: 1px solid #aacce6;
+    border-radius: 16px;
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.6), 0 0 8px rgba(0,128,192,0.3);
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 1000px;
+}
+.proj-block p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+.proj-block ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+.issues-link {
+    display: block;
+    background-color: #faf5f5;
+    border: 2px solid #050505;
+    color: #e8762b;
+    font-size: 16px;
+    width: 50%;
+    padding: 1.1rem;
+    margin: 0.5rem auto;
+}
+.issues-link:hover {
+    color: #f5401f;
+    background-color: #bebaba;
+}
+
+.proj-authorizing {
+    background-color: #fffbea;
+    border: 2px solid #d3b673;
+    padding: 16px;
+    border-radius: 8px;
+    font-family: 'Baskerville Old Face', 'Comic Sans MS', cursive;
+    font-size: 15px;
+    color: #333;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+}
+.proj-authorizing h2 {
+    color: #121111;
+    margin-top: 5px;
+}

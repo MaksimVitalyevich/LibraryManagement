@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Страница библиотеки";
+}
+
+<div class="bookshelf-container">
+    <h1>Публичная библиотека</h1>
+    <p class="welcome-text">Добро пожаловать в "XXI Современная библиотека!" Чтобы добавить книгу, выберите тип ниже:</p>
+
+    <div class="bookshelf">
+        <button type="button" onclick="createNewBook('Historical', 0, 'NewBook')" class="shelf-button historical">
+            <span class="book-spine">
+                <span class="book-title">Исторические книги</span>
+                <span class="book-text">Создать новую книгу...</span>
+            </span>
+        </button>
+        <button type="button" onclick="createNewBook('Modern', 0, 'NewBook')" class="shelf-button literature">
+            <span class="book-spine">
+                <span class="book-title">Современная литература</span>
+                <span class="book-text">Создать новую книгу...</span>
+            </span>
+        </button>
+        <button type="button" onclick="createNewBook('Guide', 0, 'NewBook')" class="shelf-button guides">
+            <span class="book-spine">
+                <span class="book-title">Справочники</span>
+                <span class="book-text">Создать новую книгу...</span>
+            </span>
+        </button>
+
+        <div class="shelf-wood"></div>
+    </div>
+
+    <div class="bookmark-note">
+        Здесь впервые?
+        <a asp-page="/ManageGuide" class="bookmark-link">Перейдите на страницу "Управление книгами" чтобы узнать больше.</a>
+    </div>
+</div>
+<script src="~/js/site.js"></script>

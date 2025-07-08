@@ -1,0 +1,77 @@
+﻿@page
+@model LibraryManagement.Pages.ManageGuidePageModel
+@{
+	ViewData["Title"] = "Справочник управления книгами";
+}
+
+<div class="manage-mainblock text-base">
+	<h1>Подготовка к управлению моделей книг (хранилище для данных):</h1>
+
+	<section class="manage-firststep">
+		<h2 class="manage-title">Приступим!</h2>
+		<p>
+			Для того чтобы управлять библиотекой как пожелаете, вам необходимо выбрать нужный тип книги.
+			Всего есть 3 варианта: <i>Исторический</i>, <i>Справочник</i> & <i>Современный</i>.<br /> 
+			Просто нажмите (книгоподобную) кнопку и вас перенаправит в форму заполнения данных. Например: 
+			<span class="inline-preview my-4">
+				<button class="shelfbutton-modern-sm">
+					<span class="book-spine-sm">
+						<span class="book-title-sm">Современная литература</span>
+						<span class="book-text-sm">Создать новую книгу...</span>
+					</span>
+				</button>
+			</span>
+		</p>
+	</section>
+	<hr />
+	<section class="manage-secondstep">
+		<h2 class="manage-title">Форма данных книги:</h2>
+		<p>
+			Как окажетесь на форме, Вам потребуется заполнить 4-5 полей данных: <strong>Эпоха</strong>, <strong>Название</strong>,
+			<strong>Автор</strong>, <strong>Год публикации</strong>, <strong>Код книги</strong>.<br />
+			Пример поля данных: 
+			<span class="inline-preview my-4">
+				<label class="bookform-label-sm">Название:</label>
+				<input type="text" readonly value="Известные проблемы в ИТ" class="inline-input"/>
+			</span>
+			Также, есть специфичное <i>последнее поле данных</i> (в зависимости от типа и требования). Если <i>Современный</i> тип выбран,
+			можете выбрать: 
+			<span class="inline-preview my-4">
+				<label class="bookform-specific-sm">Цифровая копия?</label>
+				<input type="checkbox" readonly value="true" class="inline-input"/>
+			</span> 
+			- которая идентифицирует цифровую копию книги. <br />
+			<small><i>Заметка:</i> Это поле дополнительное по отношению к данному типу.</small><br />
+			Как заокнчите заполнять, нажмите
+			<span class="inline-preview mx-1">
+				<button class="btn btn-primary">Сохранить книгу</button>
+			</span> 
+			кнопку. На этом все!
+		</p>
+	</section>
+	<hr />
+	<section class="manage-finalstep">
+		<h2 class="manage-title">Просмотр коллекции книг:</h2>
+		<p>
+			После подтверждения данных, общая таблица <strong>Всех</strong> типов книг подгрузится.
+			Здесь, вы можете: просматривать каждую категорию книги + эпохи книг; редактировать существующие; удалять текущие книги по 
+			<strong>Название</strong> + <strong>Год</strong>; сортировать книги по категориям и эпохам; Для сортировки по категориям:
+			<span class="inline-preview my-4">
+				<select class="form-select-sm" value="Все категории"></select>
+				<select class="form-select-sm" value="Все эпохи"></select>
+			</span>
+			Рядом с каждой книгой, вы можете 
+			<span class="inline-preview mx-1">
+				<button>Редактировать</button>
+			</span>
+			или 
+			<span class="inline-preview mx-1">
+				<button class="btn btn-danger">Удалить</button>
+			</span>
+			. <br /> <small>
+				Чтобы продолжать добавлять новые книги, нужно вернутся к <strong>Главная</strong> и снова выбрать тип желаемой книги! 
+				Внутри самой таблицы можно ТОЛЬКО редактировать и удалять книги!
+			</small>
+		</p>
+	</section>
+</div>

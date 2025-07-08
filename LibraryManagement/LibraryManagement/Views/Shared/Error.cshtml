@@ -1,0 +1,17 @@
+﻿@using LibraryManagement.Models
+@model ErrorViewModel
+@{
+    ViewData["Title"] = "Ошибка";
+}
+
+<div class="error-bookpage">
+    <h1>Произошла ошибка: @Model.Code</h1>
+    <p>@Model.Message</p>
+
+    @if (Model.ShowRequestId)
+    {
+        <p><small>Код запроса: <strong>@Model.RequestId</strong></small></p>
+    }
+
+    <a asp-controller="Main" asp-action="Index" class="back-link">Вернутся на главную страницу?</a>
+</div>

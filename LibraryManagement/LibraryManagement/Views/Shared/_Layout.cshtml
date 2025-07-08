@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - XXI Современная Веб-Библиотека</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/booksform.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/bookstable.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/error.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="mvc-main-header">
+        <div>
+            <h1 class="mvc-site-title">XXI Современная Веб-Библиотека</h1>
+            <span class="booklib-logo">XXI Library</span>
+            <nav class="mvc-main-nav">
+                <a href="/">Главная</a>
+                <a asp-controller="LibraryList" asp-action="Index">Список книг</a>
+                <a asp-page="/ManageGuide">Руководство управления книгами...</a>
+                <a asp-page="/About">О проекте</a>
+            </nav>
+        </div>
+        <section class="mvc-site-langselect">
+            Выбор языка:
+            <form id="langForm" method="get">
+                <select name="culture" onchange="document.getElementById('langForm').submit();">
+                    <option value="en" selected>English</option>
+                    <option value="ru">Русский</option>
+                </select>
+            </form>
+        </section>
+    </header>
+    <main class="mainview-container">
+        @RenderBody()
+    </main>
+
+    <footer class="mvc-main-footer">
+        <p>2025 XXI Современная Веб-Библиотека. Креативное Веб-Прилодение для управления собственными книгами. &copy; Maksim Vitalyevich.</p>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,16 @@
+﻿@using LibraryManagement.LibraryModule
+@model BookBase
+
+<h2>@Model.Title (@Model.Publication)</h2>
+
+<p><strong>Автор:</strong> @Model.Author</p>
+<p><strong>Категория:</strong> @Model.Category</p>
+<p><strong>Эпоха:</strong> @Model.Era</p>
+<p><strong>Код книги:</strong> @Model.Serial</p>
+
+<hr />
+<div class="bookinfo-card">
+	@Html.Raw(Model.BookInfo())
+</div>
+
+<a asp-action="Index" class="btn btn-light">Вернутся к списку</a>
