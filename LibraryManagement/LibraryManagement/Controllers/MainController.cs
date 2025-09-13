@@ -8,6 +8,10 @@ namespace LibraryManagement.Controllers
     {
         public IActionResult Index()
         {
+            var user = AccountController.getCurrentUser(HttpContext);
+            if (string.IsNullOrEmpty(user))
+                return RedirectToAction("Login", "Account");
+
             return View();
         }
 

@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Ошибка";
 }
+@await Html.PartialAsync("_UserBannerPartial")
 
 <div class="error-bookpage">
     <h1>Произошла ошибка: @Model.Code</h1>

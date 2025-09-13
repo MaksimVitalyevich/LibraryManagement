@@ -1,0 +1,53 @@
+﻿@using LibraryManagement.Controllers
+@using LibraryManagement.ReviewModule
+@model Review
+@{
+	ViewData["Title"] = "Отзыв";
+	var currentUser = AccountController.getCurrentUser(Context) ?? "Гость";
+}
+@await Html.PartialAsync("_UserBannerPartial")
+
+<h2>Отзыв</h2>
+
+<p><strong>Пользователь:</strong> @Model.User</p>
+<p><strong>Рейтинг:</strong> @(new string('★', Model.Rating))</p>
+<p><strong>Текст:</strong> @Model.Text</p>
+<p><strong>Дата:</strong> @Model.CreateAt.ToString("g")</p>
+<hr />
+
+<h3>Комментарии</h3>
+
+@if (Model.Comments.Count == 0)
+{
+	<p>В данном отзыве отсутствуют комментарии.</p>
+}
+else
+{
+	<div class="review-comments">
+		<ul>
+			@foreach (var comment in Model.Comments)
+			{
+				<li>
+					<strong>@comment.User</strong> (@comment.CreateAt.ToString("g")) : @comment.Text
+					👍 @comment.Likes | 👎 @comment.Dislikes
+					<form asp-action="LikeComment" asp-route-reviewId="@Model.Id" asp-route-commentId="@comment.Id" method="post" style="display:inline">
+						<button type="submit" class="papernote-btn">👍</button>
+					</form>
+					<form asp-action="DislikeComment" asp-route-reviewId="@Model.Id" asp-route-commentId="@comment.Id" method="post" style="display:inline">
+						<button type="submit" class="papernote-btn">👎</button>
+					</form>
+				</li>
+			}
+		</ul>
+	</div>
+}
+<hr />
+
+<h4>Добавить комментарии</h4>
+<form asp-action="AddComment" method="post" class="review-comments">
+	<input type="hidden" name="reviewId" value="@Model.Id"/>
+	<textarea name="Text" rows="2" required></textarea>
+	<button type="submit" class="papernote-btn">Отправить</button>
+</form>
+
+<a asp-action="Index">Вернутся к списку отзывов</a>

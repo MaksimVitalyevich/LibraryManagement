@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Страница библиотеки";
 }
+@await Html.PartialAsync("_UserBannerPartial")
 
 <div class="bookshelf-container">
     <h1>Публичная библиотека</h1>
@@ -32,6 +33,10 @@
     <div class="bookmark-note">
         Здесь впервые?
         <a asp-page="/ManageGuide" class="bookmark-link">Перейдите на страницу "Управление книгами" чтобы узнать больше.</a>
+    </div>
+    <div class="bookmark-note">
+        Понравился сайт?
+        <a asp-controller="Review" asp-action="Index" class="bookmark-link">Перейдите к отзывам, чтобы оставить ваше мнение!</a>
     </div>
 </div>
 <script src="~/js/site.js"></script>

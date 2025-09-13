@@ -10,7 +10,11 @@ namespace LibraryManagement.Controllers
 
         public IActionResult Index(BookCategory? selectedCategory, BookEra? selectedEra)
         {
+            var user = AccountController.getCurrentUser(HttpContext);
             var allBooks = _bookService.GetAllBooks();
+
+            if (string.IsNullOrEmpty(user))
+                RedirectToAction("Login", "Account");
 
             if (selectedCategory.HasValue)
                 allBooks = allBooks.Where(b => b.Category == selectedCategory.Value).ToList();

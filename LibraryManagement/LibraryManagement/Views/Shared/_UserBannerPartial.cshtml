@@ -1,0 +1,9 @@
+﻿@using LibraryManagement.Controllers
+@{
+    var currentUser = AccountController.getCurrentUser(Context) ?? "Гость";
+}
+
+<div class="user-banner-mvc">
+    <span>Добро пожаловать: @currentUser</span>
+    <a asp-controller="Account" asp-action="Logout" class="logout-btn">Выход</a>
+</div>

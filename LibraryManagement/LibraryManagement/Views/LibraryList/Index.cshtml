@@ -1,8 +1,6 @@
 ﻿@using LibraryManagement.LibraryModule
 @model LibraryListModel
-@{
-	var message = TempData["DebugMessage"] as string;
-}
+@await Html.PartialAsync("_UserBannerPartial")
 
 <form method="get" class="booksfilter">
 	<label>Категории:</label>
@@ -19,13 +17,6 @@
 </form>
 
 <h2>Список книг:</h2>
-
-@if (!string.IsNullOrWhiteSpace(message))
-{
-	<h3 class="alert-warning" style="margin: 10px;">
-		⚙️ Отладка: @message
-	</h3>
-}
 
 <table class="bookcards">
 	<thead>

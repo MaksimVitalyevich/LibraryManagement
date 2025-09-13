@@ -4,11 +4,11 @@
 @{
 	ViewData["Title"] = "Редактирование книги (Современный)";
 }
+@await Html.PartialAsync("_UserBannerPartial")
 
 <h1 class="bookform-header">@ViewData["Title"]</h1>
 
 <form asp-action="FormEdit" method="post" class="bookform-main">
-	@Html.AntiForgeryToken()
 	<input type="hidden" asp-for="Category" value="@BookCategory.Modern"/>
 
 	<div class="form-group">

@@ -1,5 +1,6 @@
 ﻿@using LibraryManagement.LibraryModule
 @model BookBase
+@await Html.PartialAsync("_UserBannerPartial")
 
 <h2>@Model.Title (@Model.Publication)</h2>
 

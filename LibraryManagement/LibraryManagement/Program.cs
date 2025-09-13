@@ -1,13 +1,22 @@
 using LibraryManagement.LibraryModule;
 using LibraryManagement.LibraryModule.BookModels;
 using LibraryManagement.LibraryModule.BookServices;
+using LibraryManagement.ReviewModule;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddDistributedMemoryCache();
 
 builder.Services.AddRazorPages().AddViewLocalization().AddDataAnnotationsLocalization();
 
+builder.Services.AddSession(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.IdleTimeout = TimeSpan.FromHours(1);
+});
+
+builder.Services.AddSingleton<IDataStorageService, JsonDataStorageService>();
 builder.Services.AddSingleton<IUnifiedBookService, BookMediator>();
 
 builder.Services.AddSingleton<IBookService<HistoricalBook>, HistoricalBookService>();
@@ -21,13 +30,6 @@ builder.Services.AddSingleton<IBookService<IBook>>(provider =>
 builder.Services.AddSingleton<IBookService<IBook>>(provider =>
     new BookServiceAdapter<ModernBook>(provider.GetRequiredService<IBookService<ModernBook>>()));
 
-builder.Services.AddAntiforgery(options =>
-{
-    options.HeaderName = "RequestVerificationToken";
-    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-});
-
-
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -37,7 +39,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();
@@ -49,6 +51,11 @@ app.MapRazorPages().WithStaticAssets();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Main}/{action=Index}").WithStaticAssets();
+
+app.MapControllerRoute(
+    name: "account",
+    pattern: "account/{action=Login}/{id?}",
+    defaults: new { controller = "Account" }).WithStaticAssets();
 
 app.MapControllerRoute(
     name: "library-list",
@@ -69,5 +76,10 @@ app.MapControllerRoute(
     name: "Modern",
     pattern: "Modern/{action=FormEdit}/{year?}/{title?}",
     defaults: new { controller = "ModernBook" }).WithStaticAssets();
+
+app.MapControllerRoute(
+    name: "reviews",
+    pattern: "reviews/{action=Index}/{id?}",
+    defaults: new { controller = "Review" }).WithStaticAssets();
 
 app.Run();

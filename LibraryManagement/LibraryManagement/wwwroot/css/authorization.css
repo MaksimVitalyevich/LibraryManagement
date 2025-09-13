@@ -1,0 +1,78 @@
+﻿h2 {
+    font-family: "Georgia", serif;
+    text-align: center;
+    color: #9b6e0b;
+    margin: 10px auto;
+}
+
+.authorize-block {
+    background: #fffdf7 repeat;
+    border: 2px solid #c7a86b;
+    border-radius: 10px;
+    padding: 20px;
+    width: 350px;
+    margin: 40px auto;
+    box-shadow: 3px 3px 8px rgba(80, 60, 30, 0.3);
+    font-family: "Georgia", serif;
+    color: #3a2f1f;
+}
+.authorize-block p {
+    font-family: 'Baskerville Old Face', serif;
+    color: #3e2b15;
+    opacity: 0.75;
+}
+.authorize-block label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #3e2b15;
+}
+.authorize-block input[type="text"] {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 14px;
+    border: 1px solid #b89b67;
+    border-radius: 5px;
+    background: #faf6ed;
+    font-family: "Georgia", serif;
+}
+.authorize-block select {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #9c774d;
+    border-radius: 6px;
+    background: #f8f2e0 repeat;
+    color: #2e2415;
+    margin-bottom: 14px;
+    font-family: "Georgia", serif;
+    box-shadow: inset 0 0 5px rgba(90, 60, 30, 0.3);
+}
+
+.user-banner-mvc {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(#3c6e47, #2a4f31);
+    color: #fffdf7;
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 0 0 8px 0;
+    font-family: "Georgia", serif;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.logout-btn {
+    color: #fffdf7;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    background: #2a4f31;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+.logout-btn:hover {
+    background: #3c6e47;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.7);
+}

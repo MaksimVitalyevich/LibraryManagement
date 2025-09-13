@@ -1,0 +1,82 @@
+﻿@using LibraryManagement.Controllers
+@using LibraryManagement.ReviewModule
+@model List<Review>
+@{
+	ViewData["Title"] = "Меню отзывов";
+	var currentUser = AccountController.getCurrentUser(Context) ?? "Гость";
+}
+@await Html.PartialAsync("_UserBannerPartial")
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+<h3>Оставить новый отзыв</h3>
+
+<form asp-action="Add" method="post" class="reviewform">
+	<div class="form-group">
+		<label>Рейтинг (1-5):</label>
+		<div class="stars">
+			@for (int i=1; i<=5; i++)
+			{
+				<label>
+					<input type="radio" name="Rating" value="@i" style="display:none"/>
+					<span class="star-select">★</span>
+				</label>
+			}
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label>Текст:</label>
+		<textarea name="Text" rows="3" required></textarea>
+	</div>
+
+	<button type="submit" class="papernote-btn">Добавить отзыв</button>
+</form>
+<hr />
+
+<h3>Список отзывов</h3>
+
+@if (Model.Count == 0)
+{
+	<p class="review-section">Здесь пока нету никаких отзывов.</p>
+}
+else
+{
+	<table class="review-table">
+		<thead>
+			<tr>
+				<th>Пользователь</th>
+				<th>Рейтинг</th>
+				<th>Текст</th>
+				<th>Дата</th>
+				<th>Действия</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var review in Model)
+			{
+				<tr>
+					<td>@review.User</td>
+					<td>
+						<div class="stars">
+							@for (int i=1; i<=5; i++)
+							{
+								<span class="star @(i <= review.Rating ? "star-selected" : "")">★</span>
+							}
+						</div>
+					</td>
+					<td>@review.Text</td>
+					<td>@review.CreateAt.ToString("g")</td>
+					<td>
+						<a asp-action="Details" asp-route-id="@review.Id" class="papernote-btn">Подробнее...</a> |
+						<form asp-action="Delete" asp-route-id="@review.Id" method="post" style="display:inline" 
+						onsubmit="return confirm('Удалить отзыв?');">
+						<button type="submit" class="papernote-btn">Удалить</button>
+					</form>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
